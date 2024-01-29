@@ -55,14 +55,16 @@ def cal_avg_rating(name):
 
 def ProductSalesAnalysis():
     while True:
-        print("\nProduct Sales Analysis System")
+        print('\n')
+        print('#' * 50)
+        print("Product Sales Analysis System")
         print("1. Add Sale Transactions")
         print("2. Add Customer Feedback")
         print("3. Calculating Total Sales")
         print("4. Identifying the Best-selling Product")
         print("5. Displaying Product Average Rating")
         print("6. Exit")
-        choice = input("Enter choice ")
+        choice = input("Enter choice (1/2/3/4/5/6): ")
 
         if choice == '1':
             name = input("Enter product name: ")
