@@ -11,26 +11,26 @@ def add_product(name, price):
 def add_sale(name, num):
     if name in all_products:
         all_products[name]['sale_history'].append(num)
-        return 1, None
+        print('add sale success')
     else:
-        return -1, 'No such product'
+        print('No such product')
 
 def add_feedback(name, feedback, rating):
     if name in all_products:
         all_products[name]['feedback'].append(feedback)
         all_products[name]['rating'].append(rating)
-        return 1, None
+        print('add feedback success')
     else:
-        return -1, 'No such product'
+        print('No such product')
 
 def cal_total_sale(name):
     if name in all_products:
         total = 0
         for num in all_products[name]['sale_history']:
             total += num
-        return total, None
+        print("total sales for {}: {}".format(name, total))
     else:
-        return -1, 'No such product'
+        print('No such product')
 
 def bast_selling():
     max_sale_num = 0
@@ -42,16 +42,16 @@ def bast_selling():
         if total > max_sale_num:
             max_sale_num = total
             max_sale_name = name
-    return max_sale_num, max_sale_name
+    print("bast_selling product is {}, total sales is {}".format(max_sale_name, max_sale_num))
 
 def cal_avg_rating(name):
     if name in all_products:
         if len(all_products[name]['rating']) == 0:
-            return 0, 'Product without feedback'
-        rating = all_products[name]['rating'].mean()
-        return rating, None
+            print('Product without feedback')
+        rating = sum(all_products[name]['rating']) / len(all_products[name]['rating'])
+        print("average rating for {}: {}".format(name, rating))
     else:
-        return -1, 'No such product'
+        print('No such product')
 
 def ProductSalesAnalysis():
     while True:
@@ -83,6 +83,7 @@ def ProductSalesAnalysis():
             cal_avg_rating(name)
         elif choice == '6':
             print("Exiting Product Sales Analysis System.")
+            break
         else:
             print("Invalid choice. Please choose again.")
 
@@ -96,7 +97,7 @@ if __name__=="__main__":
     add_sale('watch', 3)
     add_sale('watch', 1)
     add_sale('computer', 1)
-    add_feedback('phone', 'useful', 3)
+    add_feedback('phone', 'useful', 4)
     add_feedback('phone', 'pretty', 5)
     add_feedback('watch', 'watch', 1)
     ProductSalesAnalysis()
